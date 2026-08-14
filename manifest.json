@@ -29,7 +29,7 @@
         "*://*.qxbroker.cc/*",
         "*://*.qxbroker.site/*"
       ],
-      "js": ["content.js"],
+      "js": ["content/chart-overlay.js", "content.js"],
       "run_at": "document_start"
     }
   ],

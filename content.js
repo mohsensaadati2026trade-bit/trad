@@ -410,6 +410,18 @@
     if (!isMuted) {
       playAlertSound(type);
     }
+    
+    // Call user's chart overlay to draw signals on browser screen
+    if (window.STP_ChartOverlay) {
+      const xPos = window.innerWidth / 2 + (Math.random() * 200 - 100);
+      const yPos = window.innerHeight / 2 + (Math.random() * 200 - 100);
+      window.STP_ChartOverlay.drawSignal({
+        direction: type.toUpperCase(),
+        score: 100,
+        text: type.toUpperCase()
+      }, { x: xPos, y: yPos });
+    }
+
     console.log(`[Quotex Strategy] triggered ${type.toUpperCase()} signal.`);
   }
 

@@ -308,3 +308,53 @@
   from { opacity: 0.4; }
   to { opacity: 1; }
 }
+
+/* User's STP Chart Overlay Markers */
+.stp-signal-marker {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(13, 16, 27, 0.88);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 8px;
+  padding: 6px 10px;
+  min-width: 45px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  font-family: 'Inter', sans-serif;
+  z-index: 99999;
+  animation: marker-bounce 1s ease-out;
+}
+
+.stp-signal-marker.stp-call {
+  border: 1px solid #00e676;
+  color: #00e676;
+}
+
+.stp-signal-marker.stp-put {
+  border: 1px solid #ff1744;
+  color: #ff1744;
+}
+
+.stp-arrow {
+  font-size: 24px;
+  line-height: 1.1;
+  font-weight: bold;
+}
+
+.stp-score {
+  font-size: 10px;
+  font-weight: 700;
+  margin-top: 2px;
+  color: #ffffff;
+}
+
+@keyframes marker-bounce {
+  0% { transform: scale(0.3); opacity: 0; }
+  50% { transform: scale(1.1); }
+  75% { transform: scale(0.95); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
