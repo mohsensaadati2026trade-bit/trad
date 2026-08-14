@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+    body {
+      width: 280px;
+      margin: 0;
+      padding: 16px;
+      background-color: #0f121d;
+      color: #e0e6ed;
+      font-family: 'Inter', -apple-system, sans-serif;
+      user-select: none;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .title-wrap {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0;
+    }
+
+    .subtitle {
+      font-size: 10px;
+      color: #8a96a3;
+      margin-top: 2px;
+    }
+
+    .logo-pulse {
+      width: 10px;
+      height: 10px;
+      background-color: #2979ff;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #2979ff;
+    }
+
+    .section {
+      background: #1c2030;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .section-title {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: #8a96a3;
+      margin-bottom: 10px;
+      letter-spacing: 0.5px;
+    }
+
+    .control-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .control-row:last-child {
+      margin-bottom: 0;
+    }
+
+    label {
+      font-size: 11px;
+      color: #c2cbd6;
+    }
+
+    /* Range input styling */
+    .range-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .range-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+    }
+
+    .range-val {
+      font-weight: 600;
+      color: #2979ff;
+    }
+
+    input[type="range"] {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 2px;
+      outline: none;
+      margin: 6px 0;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 14px;
+      height: 14px;
+      background: #2979ff;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 0 5px rgba(41, 121, 255, 0.5);
+      transition: background 0.2s;
+    }
+
+    input[type="range"]::-webkit-slider-thumb:hover {
+      background: #00e676;
+    }
+
+    /* Switch styling */
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 32px;
+      height: 18px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(255, 255, 255, 0.15);
+      transition: .2s;
+      border-radius: 18px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 12px;
+      width: 12px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: .2s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: #00e676;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(14px);
+    }
+
+    .footer {
+      font-size: 9px;
+      color: #5b6875;
+      text-align: center;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="title-wrap">
+      <h1 class="title">Quotex Assistant</h1>
+      <span class="subtitle">Candle Psychology & S&R Strategy</span>
+    </div>
+    <div class="logo-pulse"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">General Settings</div>
+    <div class="control-row">
+      <label for="mute-toggle">Mute Signal Sound Alerts</label>
+      <label class="switch">
+        <input type="checkbox" id="mute-toggle">
+        <span class="slider"></span>
+      </label>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Strategy Rules (2M Period)</div>
+    
+    <div class="range-wrap">
+      <div class="range-header">
+        <label for="wick-ratio">Min Wick Rejection Ratio</label>
+        <span class="range-val" id="wick-ratio-val">45%</span>
+      </div>
+      <input type="range" id="wick-ratio" min="30" max="70" step="5" value="45">
+    </div>
+
+    <div class="range-wrap">
+      <div class="range-header">
+        <label for="sr-cluster">S&R Cluster Zone Range</label>
+        <span class="range-val" id="sr-cluster-val">0.03%</span>
+      </div>
+      <input type="range" id="sr-cluster" min="1" max="10" step="1" value="3">
+    </div>
+  </div>
+
+  <div class="footer">
+    Timeframe & Expire: 2 Minutes | Version 1.0.0
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

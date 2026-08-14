@@ -1,0 +1,53 @@
+{
+  "manifest_version": 3,
+  "name": "Quotex Candle Psychology & S&R Assistant",
+  "version": "1.0.0",
+  "description": "Chrome Extension for Quotex. Analyzes 2-minute candles and detects Support/Resistance zones for binary options trading.",
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "*://*.qxbroker.com/*",
+    "*://*.quotex.io/*",
+    "*://*.quotex-market.com/*",
+    "*://*.quotex.com/*",
+    "*://*.qxbroker.co/*",
+    "*://*.qxbroker.cc/*",
+    "*://*.qxbroker.site/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.qxbroker.com/*",
+        "*://*.quotex.io/*",
+        "*://*.quotex-market.com/*",
+        "*://*.quotex.com/*",
+        "*://*.qxbroker.co/*",
+        "*://*.qxbroker.cc/*",
+        "*://*.qxbroker.site/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["inject.js", "overlay.css"],
+      "matches": [
+        "*://*.qxbroker.com/*",
+        "*://*.quotex.io/*",
+        "*://*.quotex-market.com/*",
+        "*://*.quotex.com/*",
+        "*://*.qxbroker.co/*",
+        "*://*.qxbroker.cc/*",
+        "*://*.qxbroker.site/*"
+      ]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
